@@ -11,5 +11,5 @@
       };
     in {
       nixosModules.default = import ./module.nix;
-    }
+    };
 }
