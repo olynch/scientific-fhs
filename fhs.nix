@@ -3,12 +3,14 @@
 , enableJulia ? true
 , juliaVersion ? "julia_16"
 , enableConda ? true
+, enableQuarto ? true
 , condaInstallationPath ? "~/.conda"
 , condaJlEnv ? "conda_jl"
 , pythonVersion ? "3.8"
 , enableGraphical ? false
 , enableNVIDIA ? false
 , enableNode ? true
+, oldCurl
 , ...
 }:
 
@@ -21,8 +23,10 @@ let
       binutils
       clang
       cmake
-      curl
+      oldCurl
       expat
+      gcc
+      gfortran
       gmp
       gnumake
       gperf
@@ -66,6 +70,7 @@ let
       libcap
       libgnome-keyring3
       libgpgerror
+      libicu
       libnotify
       libpng
       libsecret
@@ -114,6 +119,11 @@ let
     let julias = callPackage ./julia.nix { };
     in [ julias."${version}" ];
 
+  quartoPackages = pkgs:
+    with pkgs;
+    let q = callPackage ./quarto.nix { };
+    in [ q.quarto ];
+
   condaPackages = pkgs:
     with pkgs;
     [ (callPackage ./conda.nix { installationPath = condaInstallationPath; }) ];
@@ -122,6 +132,7 @@ let
     (standardPackages pkgs)
     ++ optionals enableGraphical (graphicalPackages pkgs)
     ++ optionals enableJulia (juliaPackages pkgs juliaVersion)
+    ++ optionals enableQuarto (quartoPackages pkgs)
     ++ optionals enableConda (condaPackages pkgs)
     ++ optionals enableNVIDIA (nvidiaPackages pkgs);
 
