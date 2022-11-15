@@ -10,6 +10,6 @@
         inherit system;
       };
     in {
-      nixosModules.default = import ./module.nix
+      nixosModules.default = import ./module.nix;
     }
 }
