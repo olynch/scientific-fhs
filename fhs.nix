@@ -1,7 +1,16 @@
-{ lib, pkgs, enableJulia ? true, juliaVersion ? "julia_16", enableConda ? true
-, condaInstallationPath ? "~/.conda", condaJlEnv ? "conda_jl"
-, pythonVersion ? "3.8", enableGraphical ? true, enableNVIDIA ? false
-, enableNode ? true, ... }:
+{ lib
+, pkgs
+, enableJulia ? true
+, juliaVersion ? "julia_16"
+, enableConda ? true
+, condaInstallationPath ? "~/.conda"
+, condaJlEnv ? "conda_jl"
+, pythonVersion ? "3.8"
+, enableGraphical ? false
+, enableNVIDIA ? false
+, enableNode ? true
+, ...
+}:
 
 with lib;
 let
@@ -25,9 +34,10 @@ let
       unzip
       utillinux
       which
+      wkhtmltopdf
     ] ++ lib.optional enableNode pkgs.nodejs;
 
-  customGr = with pkgs; callPackage ./gr.nix { };
+  # customGr = with pkgs; callPackage ./gr.nix { };
 
   graphicalPackages = pkgs:
     with pkgs; [
@@ -37,7 +47,7 @@ let
       atk
       cairo
       cups
-      customGr
+      # customGr
       dbus
       expat
       ffmpeg
@@ -123,7 +133,6 @@ let
 
   graphical_envvars = ''
     export QTCOMPOSE=${pkgs.xorg.libX11}/share/X11/locale
-    export GRDIR=${customGr}
   '';
 
   conda_envvars = ''
@@ -167,4 +176,5 @@ let
       profile = envvars;
     };
 
-in fhsCommand
+in
+fhsCommand

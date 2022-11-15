@@ -8,7 +8,8 @@ let
     sha256 = "1gn43z1y5zw4yv93q1qajwbmmqs83wx5ls5x4i4llaciba4j6sqd";
   };
 
-in runCommand "conda-install" { buildInputs = [ makeWrapper ]; } ''
+in
+runCommand "conda-install" { buildInputs = [ makeWrapper ]; } ''
   mkdir -p $out/bin
   cp ${conda_src} $out/bin/miniconda-installer.sh
   chmod +x $out/bin/miniconda-installer.sh
