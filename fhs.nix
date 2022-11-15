@@ -10,7 +10,6 @@
 , enableGraphical ? false
 , enableNVIDIA ? false
 , enableNode ? true
-, oldCurl
 , ...
 }:
 
@@ -23,7 +22,7 @@ let
       binutils
       clang
       cmake
-      oldCurl
+      curl
       expat
       gcc
       gfortran
