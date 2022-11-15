@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs = "nixpkgs":
+    nixpkgs = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, ... }:
