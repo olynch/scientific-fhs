@@ -149,7 +149,7 @@ let
     export NIX_CFLAGS_COMPILE="-I${condaInstallationPath}/include"
     export NIX_CFLAGS_LINK="-L${condaInstallationPath}lib"
     export PATH=${condaInstallationPath}/bin:$PATH
-    source ${condaInstallationPath}/etc/profile.d/conda.sh
+    # source ${condaInstallationPath}/etc/profile.d/conda.sh
   '';
 
   conda_julia_envvars = ''
