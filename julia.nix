@@ -45,7 +45,7 @@ in
   # julia_19 =
   #   makeJulia "1.9.0-alpha" ./julia-f7b4ebece6-linux-x86_64.tar.gz;
   julia_18 =
-    makeStdJulia "1.8.2" "sha256-ZxzzpFC2OnF+Hu3X9pCH44VvAVsuFGy1SSjxmjwF55Y=";
+    makeStdJulia "1.8.3" "sha256-ZxzzpFC2OnF323219pCH44VvAVsuFGy1SSjxmjwF55Y=";
   julia_17 =
     makeStdJulia "1.7.2" "sha256-p1JEck87LeDnJJyGH79kB4JXwW+0IDvnjxz03VlzupU=";
   julia_16 =
