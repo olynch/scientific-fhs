@@ -56,6 +56,7 @@ let
       src = fetchurl {
         url =
           "https://github.com/quarto-dev/quarto-cli/releases/download/v${version}/quarto-${version}-linux-amd64.tar.gz";
+        curlOptsList = ["--location" "--remote-header-name" "--remote-name"];
         inherit sha256;
       };
       installPhase = ''
