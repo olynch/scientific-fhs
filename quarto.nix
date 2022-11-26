@@ -67,6 +67,6 @@ let
 in {
   rstudio = makeRstudio "2022.02.2-485"
     "995a85a058cbb0f59675399ed30a9f39f62167d5558ac6c0fd4459111b09d7d5";
-  quarto = makeQuarto "0.9.370"
-    "b4936b5b96fa3b5fde65a13b8f46563354fcf9963e9f3bcafe3b61e56dd33d1d";
+  quarto = makeQuarto "1.2.269"
+    "b4936b5b96fa3b5fde65a13b2321563354fcf9963e9f3bcafe3b61e56dd33d1d";
 }
