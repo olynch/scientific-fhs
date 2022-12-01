@@ -56,7 +56,6 @@ let
       src = fetchurl {
         url =
           "https://github.com/quarto-dev/quarto-cli/releases/download/v${version}/quarto-${version}-linux-amd64.tar.gz";
-        # curlOptsList = ["--location" "--remote-name"];
         inherit sha256;
       };
       installPhase = ''
@@ -69,5 +68,5 @@ in {
   rstudio = makeRstudio "2022.02.2-485"
     "995a85a058cbb0f59675399ed30a9f39f62167d5558ac6c0fd4459111b09d7d5";
   quarto = makeQuarto "1.2.269"
-    "b4936b5b96fa3b5fde65a13b2321563354fcf9963e9f3bcafe3b61e56dd33d1d";
+    "sha256-liZc7Ewo7HaIXdcXpdfQ3SW5JlOmZiZDawusjgJt8pE=";
 }
