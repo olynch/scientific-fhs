@@ -38,7 +38,7 @@ let
       utillinux
       which
       wkhtmltopdf
-      texlive.combined.scheme-small
+      texlive.combined.scheme-full
     ] ++ lib.optional enableNode pkgs.nodejs;
 
   # customGr = with pkgs; callPackage ./gr.nix { };
