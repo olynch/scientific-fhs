@@ -2,7 +2,8 @@
 , pkgs
 , enableJulia ? true
 , juliaVersion ? "julia_16"
-, enableConda ? true
+, enableConda ? false
+, enablePython ? true
 , enableQuarto ? true
 , condaInstallationPath ? "~/.conda"
 , condaJlEnv ? "conda_jl"
@@ -128,13 +129,18 @@ let
     with pkgs;
     [ (callPackage ./conda.nix { installationPath = condaInstallationPath; }) ];
 
+  pythonPackages = pkgs:
+    with pkgs;
+    [ python3.withPackages (ps: with ps; [ jupyter numpy scipy pandas matplotlib scikit-learn ]) ];
+
   targetPkgs = pkgs:
     (standardPackages pkgs)
     ++ optionals enableGraphical (graphicalPackages pkgs)
     ++ optionals enableJulia (juliaPackages pkgs juliaVersion)
     ++ optionals enableQuarto (quartoPackages pkgs)
     ++ optionals enableConda (condaPackages pkgs)
-    ++ optionals enableNVIDIA (nvidiaPackages pkgs);
+    ++ optionals enableNVIDIA (nvidiaPackages pkgs)
+    ++ optionals enablePython (pythonPackages pkgs);
 
   std_envvars = ''
     export EXTRA_CCFLAGS="-I/usr/include"
