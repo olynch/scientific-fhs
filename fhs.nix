@@ -38,7 +38,6 @@ let
       unzip
       utillinux
       which
-      wkhtmltopdf
       texlive.combined.scheme-full
     ] ++ lib.optional enableNode pkgs.nodejs;
 
