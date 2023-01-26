@@ -130,7 +130,7 @@ let
 
   pythonPackages = pkgs:
     with pkgs;
-    [ (python3.withPackages (ps: with ps; [ jupyter jupyterlab numpy scipy pandas matplotlib scikit-learn ])) ];
+    [ (python3.withPackages (ps: with ps; [ jupyter jupyterlab numpy scipy pandas matplotlib scikit-learn tox ])) ];
 
   targetPkgs = pkgs:
     (standardPackages pkgs)
