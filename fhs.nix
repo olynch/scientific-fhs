@@ -127,6 +127,7 @@ let
         packages = with rPackages; [
           knitr
           rmarkdown
+          magick
         ];
       };
     in [ q.quarto rEnv ];
