@@ -122,7 +122,7 @@ let
   quartoPackages = pkgs:
     with pkgs;
     let q = callPackage ./quarto.nix { };
-    in [ q.quarto ];
+    in [ R q.quarto ];
 
   condaPackages = pkgs:
     with pkgs;
