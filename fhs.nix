@@ -128,6 +128,7 @@ let
           knitr
           rmarkdown
           magick
+          pdftools
         ];
       };
     in [ q.quarto rEnv ];
