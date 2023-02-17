@@ -124,7 +124,7 @@ let
     let
       q = callPackage ./quarto.nix { };
       rEnv = rWrapper.override {
-        packages = with self.rPackages; [
+        packages = with rPackages; [
           knitr
           rmarkdown
         ];
