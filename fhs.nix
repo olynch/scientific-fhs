@@ -121,8 +121,15 @@ let
 
   quartoPackages = pkgs:
     with pkgs;
-    let q = callPackage ./quarto.nix { };
-    in [ R rPackages.knitr q.quarto ];
+    let
+      q = callPackage ./quarto.nix { };
+      rEnv = rWrapper.override {
+        packages = with self.rPackages; [
+          knitr
+          rmarkdown
+        ];
+      };
+    in [ q.quarto rEnv ];
 
   condaPackages = pkgs:
     with pkgs;
