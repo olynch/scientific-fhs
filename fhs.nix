@@ -129,6 +129,7 @@ let
           rmarkdown
           magick
           pdftools
+          JuliaCall
         ];
       };
     in [ q.quarto rEnv ];
