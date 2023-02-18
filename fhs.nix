@@ -39,6 +39,7 @@ let
       utillinux
       which
       texlive.combined.scheme-full
+      pdf2svg
     ] ++ lib.optional enableNode pkgs.nodejs;
 
   # customGr = with pkgs; callPackage ./gr.nix { };
