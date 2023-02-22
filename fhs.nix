@@ -23,7 +23,6 @@ let
       binutils
       clang
       cmake
-      curl
       expat
       gcc
       gfortran
