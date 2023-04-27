@@ -1,7 +1,7 @@
 { lib
 , pkgs
 , enableJulia ? true
-, juliaVersion ? "julia_16"
+, juliaVersion ? "julia_19"
 , enableConda ? false
 , enablePython ? true
 , enableQuarto ? true
