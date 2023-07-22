@@ -1,7 +1,7 @@
 { lib
 , pkgs
 , enableJulia ? true
-, juliaVersion ? "julia_19"
+, juliaVersion ? "1.9.2"
 , enableConda ? false
 , enablePython ? true
 , enableQuarto ? true
@@ -114,11 +114,6 @@ let
       linuxPackages.nvidia_x11
     ];
 
-  juliaPackages = pkgs: version:
-    with pkgs;
-    let julias = callPackage ./julia.nix { };
-    in [ julias."${version}" ];
-
   quartoPackages = pkgs:
     with pkgs;
     let
@@ -149,7 +144,7 @@ let
   targetPkgs = pkgs:
     (standardPackages pkgs)
     ++ optionals enableGraphical (graphicalPackages pkgs)
-    ++ optionals enableJulia (juliaPackages pkgs juliaVersion)
+    ++ optionals enableJulia [(pkgs.callPackage ./julia.nix { juliaVersion=juliaVersion; })]
     ++ optionals enableQuarto (quartoPackages pkgs)
     ++ optionals enableConda (condaPackages pkgs)
     ++ optionals enableNVIDIA (nvidiaPackages pkgs)
