@@ -43,7 +43,7 @@ let
 in
 {
   julia_19 =
-    makeStdJulia "1.9.2" "sha256-eeeeeeeeeeeeeeeeeeeeeeeee/8nMMT4PRNbkT1HM1k=";
+    makeStdJulia "1.9.2" "sha256-TC15n0Qtf+cYgnsZ2iusty6gQbnOVfJO7nsTE/V8Q4M=";
   julia_18 =
     makeStdJulia "1.8.3" "sha256-M8Owk1b/qiXTMxw2RrHy1LCZROj5P8uZSVeAG4u/WKk=";
   julia_17 =
