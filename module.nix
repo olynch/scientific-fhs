@@ -39,7 +39,7 @@ in
             enableNVIDIA = cfg.enableNVIDIA;
             juliaVersion = version-spec.version;
           };
-          name = if version-spec.default then "julia" else version-spec.version;
+          name = "julia" + (if version-spec.default then "" else "-" + version-spec.version);
           python =
             if version-spec.default then [
               (fhsCommand "python3" "python3")
