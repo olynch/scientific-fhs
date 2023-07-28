@@ -12,7 +12,7 @@ in
         options = {
           version = mkOption {
             type = types.str;
-            default = "julia_16";
+            default = "1.9.2";
           };
           default = mkOption {
             type = types.bool;
@@ -21,7 +21,7 @@ in
         };
       });
       default = [{
-        version = "julia_16";
+        version = "1.9.2";
         default = true;
       }];
     };
