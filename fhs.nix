@@ -137,7 +137,7 @@ let
     with pkgs;
     [
       (python3.withPackages (ps: with ps; [
-        jupyter jupyterlab numpy scipy pandas matplotlib scikit-learn tox pygments
+        jupyter jupyterlab numpy scipy pandas matplotlib scikit-learn tox pygments pydantic
       ]))
     ];
 
