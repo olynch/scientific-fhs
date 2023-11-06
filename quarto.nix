@@ -67,6 +67,6 @@ let
 in {
   rstudio = makeRstudio "2022.02.2-485"
     "995a85a058cbb0f59675399ed30a9f39f62167d5558ac6c0fd4459111b09d7d5";
-  quarto = makeQuarto "1.3.340"
-    "sha256-zGzn0nXTBghgVPP2zX7hN0vteTGjIj6JziRODOd4N/U=";
+  quarto = makeQuarto "1.3.450"
+    "sha256-bcj7SzEGfQxsw9P8WkcLrKurPupzwpgIGtxoE3KVwAU=";
 }
