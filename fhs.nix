@@ -115,19 +115,7 @@ let
     ];
 
   quartoPackages = pkgs:
-    with pkgs;
-    let
-      q = callPackage ./quarto.nix { };
-      rEnv = rWrapper.override {
-        packages = with rPackages; [
-          knitr
-          rmarkdown
-          magick
-          pdftools
-          JuliaCall
-        ];
-      };
-    in [ q.quarto rEnv ];
+    with pkgs; [ quarto rstudioWrapper ];
 
   condaPackages = pkgs:
     with pkgs;
