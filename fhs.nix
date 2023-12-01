@@ -43,8 +43,6 @@ let
       texliveScheme
     ] ++ lib.optional enableNode pkgs.nodejs;
 
-  # customGr = with pkgs; callPackage ./gr.nix { };
-
   graphicalPackages = pkgs:
     with pkgs; [
       alsaLib
@@ -133,12 +131,12 @@ let
 
   targetPkgs = pkgs:
     (standardPackages pkgs)
-    ++ optionals enableGraphical (graphicalPackages pkgs)
+    # ++ optionals enableGraphical (graphicalPackages pkgs)
     ++ optionals enableJulia [(pkgs.callPackage ./julia.nix { juliaVersion=juliaVersion; })]
-    ++ optionals enableQuarto (quartoPackages pkgs)
-    ++ optionals enableConda (condaPackages pkgs)
-    ++ optionals enableNVIDIA (nvidiaPackages pkgs)
-    ++ optionals enablePython (pythonPackages pkgs);
+    ++ optionals enableQuarto (quartoPackages pkgs);
+    # ++ optionals enableConda (condaPackages pkgs)
+    # ++ optionals enableNVIDIA (nvidiaPackages pkgs)
+    # ++ optionals enablePython (pythonPackages pkgs);
 
   std_envvars = ''
     export EXTRA_CCFLAGS="-I/usr/include"
