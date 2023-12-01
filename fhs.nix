@@ -130,9 +130,9 @@ let
     ];
 
   targetPkgs = pkgs:
-    (standardPackages pkgs);
+    (standardPackages pkgs)
     # ++ optionals enableGraphical (graphicalPackages pkgs)
-    ++ optionals enableJulia [(pkgs.callPackage ./julia.nix { juliaVersion=juliaVersion; })]
+    ++ optionals enableJulia [(pkgs.callPackage ./julia.nix { juliaVersion=juliaVersion; })];
     # ++ optionals enableQuarto (quartoPackages pkgs);
     # ++ optionals enableConda (condaPackages pkgs)
     # ++ optionals enableNVIDIA (nvidiaPackages pkgs)
