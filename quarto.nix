@@ -54,7 +54,8 @@ stdenv.mkDerivation (final: {
 
       mkdir -p $out/bin $out/share
 
-      rm -r bin/tools
+      rm -rf bin/tools/esbuild
+      rm -rf bin/tools/dart-sass
 
       mv bin/* $out/bin
       mv share/* $out/share
