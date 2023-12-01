@@ -12,7 +12,6 @@ in
         options = {
           version = mkOption {
             type = types.str;
-            default = "1.9.2";
           };
           default = mkOption {
             type = types.bool;
@@ -21,7 +20,7 @@ in
         };
       });
       default = [{
-        version = "1.9.2";
+        version = "1.9.3";
         default = true;
       }];
     };
@@ -35,10 +34,12 @@ in
     home.packages = builtins.concatMap
       (version-spec:
         let
-          fhsCommand = pkgs.callPackage ./fhs.nix {
+          scientific-fhs = pkgs.callPackage ./fhs.nix {
             enableNVIDIA = cfg.enableNVIDIA;
             juliaVersion = version-spec.version;
           };
+          fhsCommand = commandName: commandScript:
+            scientific-fhs.override { inherit commandName, commandScript };
           name = "julia" + (if version-spec.default then "" else "-" + version-spec.version);
           python =
             if version-spec.default then [

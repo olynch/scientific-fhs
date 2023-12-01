@@ -1,7 +1,7 @@
 { lib
 , pkgs
 , enableJulia ? true
-, juliaVersion ? "1.9.2"
+, juliaVersion ? "1.9.3"
 , enableConda ? false
 , enablePython ? true
 , enableQuarto ? true
@@ -11,6 +11,8 @@
 , enableGraphical ? false
 , enableNVIDIA ? false
 , enableNode ? true
+, commandName ? "scientific-fhs"
+, commandScript ? "bash"
 , ...
 }:
 
@@ -178,16 +180,12 @@ let
     conda-install
     conda create -n ${condaJlEnv} python=${pythonVersion}
   '';
-
-  fhsCommand = commandName: commandScript:
-    pkgs.buildFHSUserEnv {
-      targetPkgs = targetPkgs;
-      name = commandName; # Name used to start this UserEnv
-      multiPkgs = multiPkgs;
-      runScript = commandScript;
-      extraOutputsToInstall = extraOutputsToInstall;
-      profile = envvars;
-    };
-
 in
-fhsCommand
+pkgs.buildFHSUserEnv {
+  targetPkgs = targetPkgs;
+  name = commandName; # Name used to start this UserEnv
+    multiPkgs = multiPkgs;
+  runScript = commandScript;
+  extraOutputsToInstall = extraOutputsToInstall;
+  profile = envvars;
+}
