@@ -179,7 +179,7 @@ let
 in
 pkgs.buildFHSUserEnv {
   inherit multiPkgs extraOutputsToInstall;
-  targetPkgs = targetPkgs;
+  # targetPkgs = targetPkgs;
   name = commandName; # Name used to start this UserEnv
   runScript = commandScript;
   profile = envvars;
