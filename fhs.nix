@@ -14,7 +14,6 @@
 , commandName ? "scientific-fhs"
 , commandScript ? "bash"
 , texliveScheme ? pkgs.texlive.combined.scheme-full
-, ...
 }:
 
 with lib;
