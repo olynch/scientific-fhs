@@ -13,6 +13,7 @@
 , enableNode ? true
 , commandName ? "scientific-fhs"
 , commandScript ? "bash"
+, texliveScheme ? pkgs.texlive.combined.scheme-full
 , ...
 }:
 
@@ -39,8 +40,7 @@ let
       unzip
       utillinux
       which
-      texlive.combined.scheme-full
-      pdf2svg
+      texliveScheme
     ] ++ lib.optional enableNode pkgs.nodejs;
 
   # customGr = with pkgs; callPackage ./gr.nix { };
