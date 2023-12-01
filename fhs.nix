@@ -117,7 +117,7 @@ let
     ];
 
   quartoPackages = pkgs:
-    with pkgs; [ quarto rstudioWrapper ];
+    with pkgs; [ quarto ];
 
   condaPackages = pkgs:
     with pkgs;
