@@ -132,8 +132,8 @@ let
   targetPkgs = pkgs:
     (standardPackages pkgs)
     # ++ optionals enableGraphical (graphicalPackages pkgs)
-    ++ optionals enableJulia [(pkgs.callPackage ./julia.nix { juliaVersion=juliaVersion; })]
-    ++ optionals enableQuarto (quartoPackages pkgs);
+    # ++ optionals enableJulia [(pkgs.callPackage ./julia.nix { juliaVersion=juliaVersion; })]
+    # ++ optionals enableQuarto (quartoPackages pkgs);
     # ++ optionals enableConda (condaPackages pkgs)
     # ++ optionals enableNVIDIA (nvidiaPackages pkgs)
     # ++ optionals enablePython (pythonPackages pkgs);
@@ -179,7 +179,7 @@ let
 in
 pkgs.buildFHSUserEnv {
   inherit multiPkgs extraOutputsToInstall;
-  # targetPkgs = targetPkgs;
+  targetPkgs = targetPkgs;
   name = commandName; # Name used to start this UserEnv
   runScript = commandScript;
   profile = envvars;
