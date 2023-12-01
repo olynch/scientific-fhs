@@ -3,17 +3,18 @@
 , enableJulia ? true
 , juliaVersion ? "1.9.3"
 , enableConda ? false
-, enablePython ? true
+, enablePython ? false
 , enableQuarto ? true
 , condaInstallationPath ? "~/.conda"
 , condaJlEnv ? "conda_jl"
 , pythonVersion ? "3.8"
 , enableGraphical ? false
 , enableNVIDIA ? false
-, enableNode ? true
+, enableNode ? false
 , commandName ? "scientific-fhs"
 , commandScript ? "bash"
 , texliveScheme ? pkgs.texlive.combined.scheme-full
+, extraOutputsToInstall ? ["man" "dev"]
 }:
 
 with lib;
@@ -171,8 +172,6 @@ let
     + optionalString (enableConda && enableJulia) conda_julia_envvars
     + optionalString enableNVIDIA nvidia_envvars;
 
-  extraOutputsToInstall = [ "man" "dev" ];
-
   multiPkgs = pkgs: with pkgs; [ zlib ];
 
   condaInitScript = ''
@@ -181,10 +180,9 @@ let
   '';
 in
 pkgs.buildFHSUserEnv {
+  inherit multiPkgs extraOutputsToInstall;
   targetPkgs = targetPkgs;
   name = commandName; # Name used to start this UserEnv
-    multiPkgs = multiPkgs;
   runScript = commandScript;
-  extraOutputsToInstall = extraOutputsToInstall;
   profile = envvars;
 }
