@@ -13,7 +13,7 @@
 , enableNode ? false
 , commandName ? "scientific-fhs"
 , commandScript ? "bash"
-, texliveScheme ? pkgs.texlive.combined.scheme-full
+, texliveScheme ? pkgs.texlive.combined.scheme-minimal
 , extraOutputsToInstall ? ["man" "dev"]
 }:
 
