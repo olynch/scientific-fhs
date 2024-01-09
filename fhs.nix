@@ -58,7 +58,7 @@ let
       fontconfig
       freetype
       gettext
-      glfw
+      (glfw.override { waylandSupport = true; })
       glib
       glib.out
       gnome2.GConf
@@ -74,6 +74,7 @@ let
       libsecret
       libselinux
       libuuid
+      libxkbcommon
       ncurses
       nspr
       nss
@@ -81,6 +82,10 @@ let
       pango.out
       pdf2svg
       systemd
+      vulkan-loader
+      vulkan-headers
+      vulkan-validation-layers
+      wayland
       xorg.libICE
       xorg.libSM
       xorg.libX11
