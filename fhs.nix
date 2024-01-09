@@ -57,7 +57,6 @@ let
       ffmpeg
       fontconfig
       freetype
-      gdk_pixbuf
       gettext
       glfw
       glib
