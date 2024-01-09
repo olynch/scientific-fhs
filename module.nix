@@ -45,7 +45,7 @@ in
             juliaVersion = version-spec.version;
           };
           fhsCommand = commandName: commandScript:
-            scientific-fhs.override { inherit commandName, commandScript; };
+            scientific-fhs.override { inherit commandName; inherit commandScript; };
           name = "julia" + (if version-spec.default then "" else "-" + version-spec.version);
           python =
             if version-spec.default then [
