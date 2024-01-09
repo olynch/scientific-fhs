@@ -69,7 +69,6 @@ let
       libcap
       libgnome-keyring3
       libgpgerror
-      libicu
       libnotify
       libpng
       libsecret
@@ -81,7 +80,6 @@ let
       pango
       pango.out
       pdf2svg
-      qt4
       systemd
       xorg.libICE
       xorg.libSM
