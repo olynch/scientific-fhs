@@ -84,6 +84,7 @@ let
       pdf2svg
       qt4
       systemd
+      glfw3
       xorg.libICE
       xorg.libSM
       xorg.libX11

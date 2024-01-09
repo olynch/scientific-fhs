@@ -29,6 +29,11 @@ in
       type = types.bool;
       default = false;
     };
+
+    enableGraphical = mkOption {
+      type = types.bool;
+      default = false;
+    };
   };
   config = {
     home.packages = builtins.concatMap
@@ -36,6 +41,7 @@ in
         let
           scientific-fhs = pkgs.callPackage ./fhs.nix {
             enableNVIDIA = cfg.enableNVIDIA;
+            enableGraphical = cfg.enableGraphical;
             juliaVersion = version-spec.version;
           };
           fhsCommand = commandName: commandScript:
