@@ -41,6 +41,7 @@ let
       utillinux
       which
       texliveScheme
+      ncurses
     ] ++ lib.optional enableNode pkgs.nodejs;
 
   graphicalPackages = pkgs:
