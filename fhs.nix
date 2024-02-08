@@ -43,6 +43,7 @@ let
       texliveScheme
       ncurses
       bubblewrap
+      poetry
     ] ++ lib.optional enableNode pkgs.nodejs;
 
   graphicalPackages = pkgs:
