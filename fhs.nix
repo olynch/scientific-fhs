@@ -12,7 +12,7 @@
 , enableNVIDIA ? false
 , enableNode ? false
 , commandName ? "scientific-fhs"
-, commandScript ? "bash"
+, commandScript ? "zsh"
 , texliveScheme ? pkgs.texlive.combined.scheme-minimal
 , extraOutputsToInstall ? ["man" "dev"]
 }:
@@ -171,16 +171,8 @@ let
 
   nvidia_envvars = ''
     export CUDA_PATH=${pkgs.cudatoolkit_11}
-    # export LD_LIBRARY_PATH=${pkgs.cudatoolkit_11}/lib:${pkgs.cudnn_cudatoolkit_11}/lib:${pkgs.cudatoolkit_11.lib}/lib:${pkgs.zlib}/lib:$LD_LIBRARY_PATH
+    export LD_LIBRARY_PATH=${pkgs.cudatoolkit_11}/lib:${pkgs.cudnn_cudatoolkit_11}/lib:${pkgs.cudatoolkit_11.lib}/lib:${pkgs.zlib}/lib:$LD_LIBRARY_PATH
     export EXTRA_LDFLAGS="-L/lib -L${pkgs.linuxPackages.nvidia_x11}/lib"
-    export CUDA_PATH=${pkgs.cudatoolkit}
-    export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath [
-                    pkgs.glib
-                    pkgs.linuxPackages.nvidia_x11
-                    pkgs.libz
-                    pkgs.libGL
-                    pkgs.stdenv.cc.cc
-                  ]}
   '';
 
   envvars = std_envvars + optionalString enableGraphical graphical_envvars
