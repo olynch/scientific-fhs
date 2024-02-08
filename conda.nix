@@ -7,6 +7,7 @@
 , libselinux
 , libarchive
 , libGL
+, poetry
 , xorg
 , zlib
 # Conda installs its packages and environments under this directory
@@ -14,7 +15,7 @@
 # Conda manages most pkgs itself, but expects a few to be on the system.
 , condaDeps ? [ stdenv.cc xorg.libSM xorg.libICE xorg.libX11 xorg.libXau xorg.libXi xorg.libXrender libselinux libGL zlib]
 # Any extra nixpkgs you'd like available in the FHS env for Conda to use
-, extraPkgs ? [ ]
+, extraPkgs ? [ poetry ]
 }:
 
 let
