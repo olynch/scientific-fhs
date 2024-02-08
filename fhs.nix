@@ -133,7 +133,7 @@ let
     with pkgs;
     [
       (python3.withPackages (ps: with ps; [
-        poetry mlflow jupyter jupyterlab numpy scipy pandas matplotlib scikit-learn tox pygments
+        poetry-core mlflow jupyter jupyterlab numpy scipy pandas matplotlib scikit-learn tox pygments
       ]))
     ];
 
