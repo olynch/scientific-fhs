@@ -1,4 +1,4 @@
-{ poetry, stdenv, lib, fetchurl, zlib, glib, xorg, dbus, fontconfig, freetype, libGL, juliaVersion }:
+{ stdenv, lib, fetchurl, zlib, glib, xorg, dbus, fontconfig, freetype, libGL, juliaVersion }:
 
 let
   versionShas = {
@@ -24,9 +24,6 @@ let
     stdenv.mkDerivation {
       name = "julia-${version}";
       src = src;
-      buildInputs = [
-       poetry 
-      ];
       installPhase = ''
         mkdir $out
         cp -R * $out/
