@@ -51,6 +51,7 @@ in
             if version-spec.default then [
               (fhsCommand "python3" "python3")
               (fhsCommand "python" "python3")
+              (fhsCommand "poetry" "poetry")
             ] else
               [ ];
           quarto = if version-spec.default then [ (fhsCommand "quarto" "quarto") ] else [];
