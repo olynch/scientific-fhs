@@ -8,7 +8,7 @@
       packages.x86_64-linux.scientific-fhs = pkgs.callPackage ./fhs.nix {
         enableNVIDIA = false;
         enableGraphical = true;
-        juliaVersion = "1.10.0";
+        juliaVersion = "1.10.1";
       };
     };
 }
