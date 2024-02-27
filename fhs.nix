@@ -69,6 +69,7 @@ let
       gtk3
       libGL
       libcap
+      libdrm
       libgnome-keyring3
       libgpgerror
       libnotify
@@ -77,6 +78,7 @@ let
       libselinux
       libuuid
       libxkbcommon
+      mesa # TODO: Use libgbm instead when upstream fixed: https://github.com/NixOS/nixpkgs/issues/218232
       ncurses
       nspr
       nss
