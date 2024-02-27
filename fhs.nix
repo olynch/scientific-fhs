@@ -77,6 +77,7 @@ let
       libselinux
       libuuid
       libxkbcommon
+      mesa # TODO: Use libgbm instead when upstream fixed: https://github.com/NixOS/nixpkgs/issues/218232
       ncurses
       nspr
       nss
