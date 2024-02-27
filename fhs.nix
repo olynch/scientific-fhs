@@ -68,6 +68,7 @@ let
       gtk3
       libGL
       libcap
+      libdrm
       libgnome-keyring3
       libgpgerror
       libnotify
