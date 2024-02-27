@@ -42,6 +42,7 @@ let
       which
       texliveScheme
       ncurses
+      poetry
     ] ++ lib.optional enableNode pkgs.nodejs;
 
   graphicalPackages = pkgs:
