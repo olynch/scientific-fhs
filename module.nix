@@ -34,6 +34,11 @@ in
       type = types.bool;
       default = false;
     };
+
+    enablePython = mkOption {
+      type = types.bool;
+      default = false;
+    };
   };
   config = {
     home.packages = builtins.concatMap
@@ -48,7 +53,7 @@ in
             scientific-fhs.override { inherit commandName; inherit commandScript; };
           name = "julia" + (if version-spec.default then "" else "-" + version-spec.version);
           python =
-            if version-spec.default then [
+            if cfg.enablePython && version-spec.default then [
               (fhsCommand "python3" "python3")
               (fhsCommand "python" "python3")
               (fhsCommand "poetry" "poetry")
