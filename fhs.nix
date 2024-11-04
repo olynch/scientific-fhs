@@ -47,7 +47,7 @@ let
 
   graphicalPackages = pkgs:
     with pkgs; [
-      alsaLib
+      alsa-lib
       at-spi2-atk
       at-spi2-core
       atk
