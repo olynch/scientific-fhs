@@ -71,7 +71,7 @@ let
       libcap
       libdrm
       libgnome-keyring3
-      libgpgerror
+      libgpg-error
       libnotify
       libpng
       libsecret
