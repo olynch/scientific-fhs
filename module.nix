@@ -20,7 +20,7 @@ in
         };
       });
       default = [{
-        version = "1.9.3";
+        version = "1.11.1";
         default = true;
       }];
     };
