@@ -1,21 +1,9 @@
-{ lib
-, pkgs
-, enableJulia ? true
-, juliaVersion ? "1.10.1"
-, enableConda ? false
-, enablePython ? false
-, enableQuarto ? true
-, condaInstallationPath ? "~/.conda"
-, condaJlEnv ? "conda_jl"
-, pythonVersion ? "3.8"
-, enableGraphical ? false
-, enableNVIDIA ? false
-, enableNode ? false
-, commandName ? "scientific-fhs"
-, commandScript ? "bash"
-, texliveScheme ? pkgs.texlive.combined.scheme-minimal
-, extraOutputsToInstall ? ["man" "dev"]
-}:
+{ lib, pkgs, enableJulia ? true, juliaVersion ? "1.10.1", enableConda ? false
+, enablePython ? false, enableQuarto ? true, condaInstallationPath ? "~/.conda"
+, condaJlEnv ? "conda_jl", pythonVersion ? "3.8", enableGraphical ? false
+, enableNVIDIA ? false, enableNode ? false, commandName ? "scientific-fhs"
+, commandScript ? "bash", texliveScheme ? pkgs.texlive.combined.scheme-minimal
+, extraOutputsToInstall ? [ "man" "dev" ] }:
 
 with lib;
 let
@@ -120,13 +108,9 @@ let
       linuxPackages.nvidia_x11
     ];
 
-
   quartoPackages = pkgs:
-  let
-    quarto = pkgs.callPackage ./quarto.nix {
-      rWrapper = null;
-    };
-  in [ quarto ];
+    let quarto = pkgs.callPackage ./quarto.nix { rWrapper = null; };
+    in [ quarto ];
 
   condaPackages = pkgs:
     with pkgs;
@@ -135,15 +119,25 @@ let
   pythonPackages = pkgs:
     with pkgs;
     [
-      (python3.withPackages (ps: with ps; [
-        jupyter jupyterlab numpy scipy pandas matplotlib scikit-learn tox pygments
-      ]))
+      (python3.withPackages (ps:
+        with ps; [
+          jupyter
+          jupyterlab
+          numpy
+          scipy
+          pandas
+          matplotlib
+          scikit-learn
+          tox
+          pygments
+        ]))
     ];
 
   targetPkgs = pkgs:
     (standardPackages pkgs)
     ++ optionals enableGraphical (graphicalPackages pkgs)
-    ++ optionals enableJulia [(pkgs.callPackage ./julia.nix { juliaVersion=juliaVersion; })]
+    ++ optionals enableJulia
+    [ (pkgs.callPackage ./julia.nix { juliaVersion = juliaVersion; }) ]
     ++ optionals enableQuarto (quartoPackages pkgs)
     ++ optionals enableConda (condaPackages pkgs)
     ++ optionals enableNVIDIA (nvidiaPackages pkgs)
@@ -187,8 +181,7 @@ let
     conda-install
     conda create -n ${condaJlEnv} python=${pythonVersion}
   '';
-in
-pkgs.buildFHSUserEnv {
+in pkgs.buildFHSEnv {
   inherit multiPkgs extraOutputsToInstall;
   targetPkgs = targetPkgs;
   name = commandName; # Name used to start this UserEnv
